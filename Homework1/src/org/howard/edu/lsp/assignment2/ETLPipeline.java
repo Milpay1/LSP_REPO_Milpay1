@@ -73,10 +73,26 @@ public class ETLPipeline {
                         priceRange = "Premium"
                     }
 
-                    
+                    writer.printf("%d, %s, %.2f, %s, %s%n", productId, name, price.doubleValue(), category, priceRange);
+
+                    rowsTransformed++;
+
+
+                } catch (Exception e) {
+                    rowsSkipped++;
                 }
             }
+
+        System.out.println("ETL Summary: ");
+        System.out.println("Rows read: " + rowsRead);
+        System.out.println("Rows transformed: " + rowsTransformed);
+        System.out.println("Rows skipped: " + rowsSkipped);
+        System.out.println("Output written to: " + OUTPUT_PATH);
+
+        } catch (IOException e) {
+            System.err.println("ERROR processing file: " + e.getMessage());
         }
+
 
         
     }
