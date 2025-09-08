@@ -45,6 +45,35 @@ public class ETLPipeline {
                 try {
                     int productId = Integer.parseInt(parst[0].trim());
                     String name = parts[1].trim();
+                    BigDecimal price = new BigDecimal(parts[2].trim());
+                    String category = parts[3].trim();
+
+                    name = name.toUpperCase();
+
+                    BigDecimal originalPrice = price;
+                    if (category.equalsIgnoreCase("Electronics")) {
+                        price = price.multiply(new BigDecimal("0.90"));
+                        price = price.setScale(2, RoundingMode.HALF_UP);
+                    } else {
+                        price = price.setScale(2, RoundingMode.HALF_UP);
+                    }
+
+                    if (category.equalsIgnoreCase("Electronics") && price.compareTo(new BigDecimal("500.00")) > 0) {
+                        category = "Premium Electronics";
+                    }
+
+                    String priceRange;
+                    if (price.compareTo(new BigDecimal("0.00")) >= 0 && price.compareTo(new BigDecimal("10.00")) <= 0) {
+                        priceRange = "Low";
+                    } else if (price.compareTo(new BigDecimal("10.00")) > 0 && price.compareTo(new BigDecimal("100.00")) <= 0) {
+                        priceRange = "Medium";
+                    } else if (price.compareTo(new BigDecimal("100.00")) > 0 && price.compareTo(new BigDecimal("500.00")) <= 0) {
+                        priceRange = "High";
+                    } else {
+                        priceRange = "Premium"
+                    }
+
+                    
                 }
             }
         }
