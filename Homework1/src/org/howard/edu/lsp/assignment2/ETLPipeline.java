@@ -1,7 +1,54 @@
 package org.howard.edu.lsp.assignment2;
+import java.io.*;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 
 public class ETLPipeline {
+
+    private static final String INPUT_PATH = "data/products.csv"
+    private static final String OUTPUT_PATH = "data/transformed_products.csv"
+
     public static void main(String[] args) {
+        int rowsRead = 0;
+        int rowsTransformed = 0;
+        int rowsSkipped = 0;
+
+        File inputFile = new File(INPUT_PATH);
+        if (!inputFile.exists()) {
+            System.err.println("ERROR: Input file not found at " + INPUT_PATH);
+        }
+
+        try (
+            BufferedReader reader = new BufferedReader(new FileReader(INPUT_PATH));
+            PrintWriter writer = new PrintWriter(new FileWriter(OUTPUT_PATH));
+        ) {
+            String header = reader.readLine();
+            if (header == null || header.trim().isEmpty()) {
+                writer.println("ProductID,Name,Price,Category,PriceRange");
+                System.out.println("Input file is empty. Only header written to " + OUTPUT_PATH);
+                return;
+            }
+
+            writer.println("ProductID,Name,Price,Category,PriceRange");
+
+            String line;
+            whlie((line = reader.readLine()) != null) {
+                rowsRead++;
+                String[] parts = line.split(",");
+
+                if (parts.length < 4) {
+                    rowsSkipped++;
+                    continue;
+                }
+
+                try {
+                    int productId = Integer.parseInt(parst[0].trim());
+                    String name = parts[1].trim();
+                }
+            }
+        }
+
         
     }
 }
