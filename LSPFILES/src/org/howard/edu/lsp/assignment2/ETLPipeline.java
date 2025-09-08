@@ -6,8 +6,8 @@ import java.math.RoundingMode;
 
 public class ETLPipeline {
 
-    private static final String INPUT_PATH = "data/products.csv"
-    private static final String OUTPUT_PATH = "data/transformed_products.csv"
+    private static final String INPUT_PATH = "data/products.csv";
+    private static final String OUTPUT_PATH = "data/transformed_products.csv";
 
     public static void main(String[] args) {
         int rowsRead = 0;
@@ -33,7 +33,7 @@ public class ETLPipeline {
             writer.println("ProductID,Name,Price,Category,PriceRange");
 
             String line;
-            whlie((line = reader.readLine()) != null) {
+            while ((line = reader.readLine()) != null) {
                 rowsRead++;
                 String[] parts = line.split(",");
 
@@ -43,7 +43,7 @@ public class ETLPipeline {
                 }
 
                 try {
-                    int productId = Integer.parseInt(parst[0].trim());
+                    int productId = Integer.parseInt(parts[0].trim());
                     String name = parts[1].trim();
                     BigDecimal price = new BigDecimal(parts[2].trim());
                     String category = parts[3].trim();
@@ -70,7 +70,7 @@ public class ETLPipeline {
                     } else if (price.compareTo(new BigDecimal("100.00")) > 0 && price.compareTo(new BigDecimal("500.00")) <= 0) {
                         priceRange = "High";
                     } else {
-                        priceRange = "Premium"
+                        priceRange = "Premium";
                     }
 
                     writer.printf("%d, %s, %.2f, %s, %s%n", productId, name, price.doubleValue(), category, priceRange);
