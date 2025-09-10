@@ -1,0 +1,3 @@
+To run this code you first have to compile to an out folder running "javac -d out src/org/howard/edu/lsp/assignment2/ETLPipeline.java" then run the class with "java -cp out org.howard.edu.lsp.assignment2.ETLPipeline". 
+
+AI was used for beginning this project I gave it the directions and told it to explain the given code and why it made the choices it did. From this I learned about the use of the java.io import which is used when reading and writing to files in java. This gives access to the FileReader, FileWriter, BufferedReader and more which are then used to read and write to the products and transformed producst csv files. They're in a try block because it will close the files automatically when done. 
