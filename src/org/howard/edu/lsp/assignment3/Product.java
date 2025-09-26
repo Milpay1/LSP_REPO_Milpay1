@@ -7,6 +7,7 @@ public class Product {
     private  String category;
     private  String priceRange;
 
+    // Constructor
     public Product(int productId, String name, BigDecimal price, String category, String priceRange) {
         this.productId = productId;
         this.name = name;
@@ -14,6 +15,8 @@ public class Product {
         this.category = category;
         this.priceRange = priceRange;
     }
+
+    // getters and setters added
 
     public int getProductId() {
         return productId;
@@ -45,6 +48,6 @@ public class Product {
     public void setPriceRange(String priceRange) {
         this.priceRange = priceRange;
     }
-    
+
 
 }

@@ -9,18 +9,37 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Responsible for reading product data from a CSV file.
+ * This class handles the "Extract" stage of the ETL pipeline.
+ */
 public class CSVReader {
     private final String inputPath;
 
+    /**
+     * Constructs a CSVReader with the given input file path.
+     *
+     * @param inputPath the relative or absolute path of the CSV file
+     *                  containing raw product data
+     */
     public CSVReader(String inputPath) {
         this.inputPath = inputPath;
     }
 
+    /**
+     * Reads product data from the configured CSV file and converts each valid
+     * row into a {@link Product} object. Malformed or empty lines are skipped.
+     *
+     * @return a list of {@link Product} objects extracted from the CSV
+     * @throws IOException if an error occurs while reading the file
+     * @throws FileNotFoundException if the input file does not exist
+     */
     public List<Product> readProducts() throws IOException {
         File f = new File(inputPath);
         if (!f.exists()) {
             throw new FileNotFoundException("Input file not found at " + inputPath);
         }
+
         List<Product> products = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(inputPath))) {
             String header = br.readLine();
@@ -44,9 +63,10 @@ public class CSVReader {
                     String category = parts[3].trim();
                     products.add(new Product(productId, name, price, category, ""));
                 } catch (NumberFormatException e) {
+                    // Skip rows with invalid numeric fields
                 }
+            }
         }
-    }
-    return products;
+        return products;
     }
 }
