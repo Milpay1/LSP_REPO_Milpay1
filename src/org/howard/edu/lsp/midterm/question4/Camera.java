@@ -3,9 +3,9 @@ package org.howard.edu.lsp.midterm.question4;
 public class Camera extends Device implements Networked, BatteryPowered {
     private int batteryPercent;
 
-    public Camera(String id, String location) {
+    public Camera(String id, String location, int initialBatteryPercent) {
         super(id, location);
-        this.batteryPercent = 100; // Assume new device starts with full battery
+        setBatteryPercent(initialBatteryPercent);
     }
 
     @Override
