@@ -106,7 +106,16 @@ public class IntegerSetTest {
         assertEquals("[1, 3]", set1.toString());
     }
 
-    
+    @Test 
+    public void testComplement() {
+        set1.add(1);
+        set1.add(2);
+        set2.add(1);
+        set2.add(2);
+        set2.add(3);
+        set1.complement(set2);
+        assertEquals("[3]", set1.toString());
+    }
 
 
 
