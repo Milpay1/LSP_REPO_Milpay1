@@ -50,5 +50,44 @@ public class IntegerSetTest {
     }
 
     @Test
+    public void testLargestAndSmallest() {
+        set1.add(10);
+        set1.add(5);
+        set1.add(20);
+        assertEquals(20, set1.largest());
+        assertEquals(5, set1.smallest());
+    }
+
+    @Test
+    public void testLargestAndSmallestThrowsExceptionOnEmpty() {
+        assertThrows(IllegalStateException.class, () -> set1.largest());
+        assertThrows(IllegalStateException.class, () -> set1.smallest());
+    }
+
+    @Test
+    public void testRemove() {
+        set1.add(1);
+        set1.add(2);
+        set1.remove(1);
+        assertFalse(set1.contains(1));
+        assertEquals(1, set1.length());
+    }
+
+    @Test
+    public void testUnion() {
+        set1.add(1);
+        set1.add(2);
+        set2.add(2);
+        set2.add(3);
+        assertTrue(set1.equals(new IntegerSet() {{
+            add(1);
+            add(2);
+            add(3);
+        }}));
+    }
+
     
+
+
 }
+
