@@ -30,5 +30,25 @@ public class IntegerSetTest {
         assertTrue(set1.isEmpty());
     }
 
+    @Test
+    public void testContains() {
+        set1.add(5);
+        assertTrue(set1.contains(5));
+        assertFalse(set1.contains(3));
+    }
+
+    @Test
+    public void testEquals() {
+        set1.add(1);
+        set1.add(2);
+        set2.add(2);
+        set2.add(1);
+        assertTrue(set1.equals(set2));
+
+        set2.add(3);
+        assertFalse(set1.equals(set2));
+    }
+
+    @Test
     
 }
