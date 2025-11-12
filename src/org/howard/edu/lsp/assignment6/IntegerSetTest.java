@@ -86,7 +86,28 @@ public class IntegerSetTest {
         }}));
     }
 
+    @Test 
+    public void testIntersect() {
+        set1.add(1);
+        set1.add(2);
+        set2.add(2);
+        set2.add(3);
+        set1.intersect(set2);
+        assertEquals("[2]", set1.toString());
+    }
+
+    @Test
+    public void testDiff() {
+        set1.add(1);
+        set1.add(2);
+        set1.add(3);
+        set2.add(2);
+        set1.diff(set2);
+        assertEquals("[1, 3]", set1.toString());
+    }
+
     
+
 
 
 }
