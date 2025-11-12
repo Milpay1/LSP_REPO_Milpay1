@@ -69,7 +69,7 @@ public class IntegerSet  {
     
     /** Set union: modifies this to contain all unique elements in this or other. */
     public void union(IntegerSet other) { 
-        for (Integer v : other.set) {
+        for (int v : other.set) {
             if (!set.contains(v)) {
                 set.add(v);
             }

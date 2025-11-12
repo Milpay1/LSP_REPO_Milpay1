@@ -79,11 +79,8 @@ public class IntegerSetTest {
         set1.add(2);
         set2.add(2);
         set2.add(3);
-        assertTrue(set1.equals(new IntegerSet() {{
-            add(1);
-            add(2);
-            add(3);
-        }}));
+        set1.union(set2);
+        assertEquals("[1, 2, 3]", set1.toString());
     }
 
     @Test 
