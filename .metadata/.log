@@ -30,3 +30,36 @@ Caused by: org.eclipse.core.internal.resources.ResourceException: Invalid projec
 	at org.eclipse.ui.internal.wizards.datatransfer.SmartImportJob.createOrImportProject(SmartImportJob.java:594)
 	at org.eclipse.ui.internal.wizards.datatransfer.SmartImportJob.toExistingOrNewProject(SmartImportJob.java:542)
 	... 2 more
+
+!ENTRY org.eclipse.core.resources 4 568 2025-12-08 18:53:26.609
+!MESSAGE Could not write metadata for '/LSP_REPO_Milpay1_'.
+!STACK 0
+java.io.FileNotFoundException: /Users/Miles/LSP_REPO_Milpay1/.metadata/.plugins/org.eclipse.core.resources/.projects/LSP_REPO_Milpay1_/.markers.snap (No such file or directory)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:289)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:230)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:150)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:52)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:48)
+	at org.eclipse.core.internal.resources.SaveManager.visitAndSnap(SaveManager.java:1939)
+	at org.eclipse.core.internal.resources.SaveManager.visitAndSnap(SaveManager.java:2012)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1322)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1263)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:53)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.ui.ide 4 4 2025-12-08 18:53:52.094
+!MESSAGE Problems saving workspace
+
+!ENTRY org.eclipse.ui.ide 4 1 2025-12-08 18:53:52.094
+!MESSAGE Problems occurred while trying to save the state of the workbench.
+!SUBENTRY 1 org.eclipse.ui.ide 4 1 2025-12-08 18:53:52.095
+!MESSAGE Internal Error
+!STACK 0
+java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+	at org.eclipse.core.internal.resources.SaveManager.forEachProjectInParallel(SaveManager.java:1906)
+	at org.eclipse.core.internal.resources.SaveManager.visitAndSave(SaveManager.java:1861)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1297)
+	at org.eclipse.core.internal.resources.Workspace.save(Workspace.java:2549)
+	at org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor.lambda$1(IDEWorkbenchAdvisor.java:555)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:123)
